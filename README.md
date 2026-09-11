@@ -1,106 +1,107 @@
 # AI Case Completeness Checker
 
-Final project for the Building AI course.
+Slutprojekt för Building AI-kursen.
 
-## Summary
+## Sammanfattning
 
-The idea is to use AI to help with the first check of documents in an application case. The system could help identify missing or duplicate documents, check whether documents seem to belong to the applicant, and give an indication of whether the case is complete enough to continue processing.
+Idén är att använda AI för att hjälpa till med den första kontrollen av handlingar i ett ärende hos UHR. Systemet skulle kunna identifiera saknade eller dubbla handlingar, kontrollera om handlingar verkar tillhöra den sökande och ge en indikation på om ärendet verkar vara komplett för fortsatt handläggning.
 
-The purpose is not to replace the case officer. Instead, the AI would be used as a support tool for the initial document check.
+Syftet är inte att ersätta handläggaren. AI skulle i stället fungera som ett stöd vid den första kontrollen av inkomna handlingar.
 
-## Background
+## Bakgrund
 
-When processing an application, a case can contain several different documents. Before the case can continue, the submitted documents may need to be checked to see if the required information and documents are there.
+När ett ärende handläggs kan det innehålla flera olika handlingar. Innan ärendet kan gå vidare för utredning behöver de inkomna handlingarna kontrolleras för att se om de handlingar och uppgifter som behövs finns med. Vad är egentligen de handlingarana?
 
-This first check can involve a lot of repetitive work. The idea of this project is to use AI to make this part of the process easier and faster.
+Den första kontrollen kan innebära mycket manuellt och återkommande arbete, dvs.snabbgranskning. Tanken med projektet är därför att använda AI för att göra denna del av arbetet enklare och snabbare.
 
-For example, the system could help answer questions such as:
+Systemet skulle till exempel kunna hjälpa till att svara på frågor som:
 
-- What type of document has been submitted?
-- Is an examination certificate included?
-- Does the document contain information such as the education, institution and graduation year?
-- Does the name or other information on a document seem to match the applicant?
-- Has the same document been submitted more than once?
-- Is an important document missing?
-- Does the case appear to have enough documents to continue to processing?
+- Vilken typ av handling har skickats in? (examensbevis - transcrip -  yrkesmässig översättningar - verifiering osv.) 
+- Finns ett officiellt examensbevis och transcrip med? 
+- Innehåller handlingarna uppgifter om studentens personuppgifter , utbildning, lärosäte och examensår. Signatur och exemplar dessutom?
+- Verkar namnet eller andra uppgifter på handlingen stämma överens med den sökande i ärendet?
+- Har samma handling skickats in mer än en gång?
+- Saknas någon viktig handling?
+- Verkar ärendet innehålla tillräckligt med handlingar för att kunna gå vidare till handläggning?
 
-The AI would not make the final decision. It would instead point out possible problems so that a case officer can review them.
+AI:n skulle inte fatta det slutliga beslutet. Den skulle i stället uppmärksamma möjliga problem som en handläggare kan kontrollera.
 
-## How is it used?
+## Hur används lösningen?
 
-A possible workflow could be:
+Ett möjligt arbetsflöde skulle kunna se ut så här:
 
-1. Documents are received in an application case.
-2. The AI reads and analyses the documents.
-3. The system identifies the type of each document.
-4. It extracts relevant information from the documents.
-5. It checks the documents against the information and documents expected for the case.
-6. It highlights possible missing, duplicate or incorrect documents.
-7. It gives an indication of whether the case appears complete.
-8. A case officer reviews the result and makes the final decision.
+1. Handlingar kommer in i ett ärende.
+2. AI:n läser och analyserar handlingarna.
+3. Systemet identifierar vilken typ av handling det är.
+4. Relevant information hämtas från handlingarna.
+5. Systemet jämför handlingarna med den information och de handlingar som förväntas i ärendet.
+6. Systemet markerar möjliga saknade, dubbla eller felaktiga handlingar.
+7. Systemet ger en indikation på om ärendet verkar vara komplett.
+8. Handläggaren granskar resultatet och gör den slutliga bedömningen.
 
-For example, the system could show something like:
+Ett exempel på hur resultatet skulle kunna visas:
 
-**Case status: Possible missing document**
+**Ärendestatus: Möjlig handling saknas**
 
-- Examination certificate: Found
-- Transcript: Found
-- Identity document: Found
-- Required document: Missing
+- Examensbevis för bachelor och master: Hittat
+- Transcrip för master: Hittad
+- Identitetshandling: Hittad
+- Översättningar för examensbevis (bachelor och master) samt för Transcrip för bachelor och master : Hittat
+- Obligatorisk handling - Transcrip (originalspråk) för bachelor: Saknas
 
-The case officer can then check the information before continuing with the case.
+Handläggaren kan sedan skicka en komplettering innan ärendet går vidare.
 
-## Data sources and AI methods
+## Datakällor och AI-metoder
 
-A possible prototype could use anonymised example documents and examples of different document types.
+En möjlig prototyp skulle kunna använda anonymiserade exempel på handlingar och olika typer av dokument.
 
-The project could use several AI techniques:
+Projektet skulle kunna använda flera AI-metoder:
 
-- Machine learning
-- Document classification
+- Maskininlärning
+- Dokumentklassificering
 - Optical Character Recognition (OCR)
 - Natural Language Processing (NLP)
-- Similarity detection for finding duplicate documents
+- Likhetsanalys för att hitta möjliga dubbletter
 
-OCR could be used to extract text from scanned documents or images.
+OCR kan användas för att läsa text från inskannade handlingar eller bilder.
 
-Document classification could help identify what type of document has been submitted.
+Dokumentklassificering kan hjälpa till att identifiera vilken typ av handling som har skickats in.
 
-NLP could help extract information such as names, institutions, education and dates.
+NLP kan användas för att hitta information som namn, lärosäte, utbildning och datum.
 
-Similarity detection could help identify documents that are the same or very similar.
+Likhetsanalys kan användas för att identifiera handlingar som är identiska eller mycket lika varandra.
 
-In a real implementation, the data would need to be handled carefully because application documents can contain personal information.
+I en verklig tillämpning behöver informationen hanteras med stor försiktighet eftersom handlingarna kan innehålla personuppgifter.
 
-## Challenges
+## Utmaningar
 
-There are several challenges with this idea.
+Det finns flera utmaningar med idén.
 
-Documents can look very different from each other. They can have different formats, languages, layouts and quality. Some documents may also be scanned images or difficult to read.
+Handlingar kan se mycket olika ut från olika länder. De kan ha olika format, språk, layouter och kvalitet. Vissa handlingar kan också vara inskannade bilder eller svåra att läsa.
 
-It may also be difficult for an AI system to decide whether a document really belongs to the applicant. A difference in a name does not always mean that the document is incorrect.
+Det kan också vara svårt för ett AI-system att avgöra om en handling verkligen tillhör den sökande. En skillnad i namn behöver till exempel inte alltid betyda att handlingen är felaktig.
 
-Another challenge is deciding what makes a case complete. Different types of cases may require different documents, so the system would need clear rules and good examples.
+En annan utmaning är att avgöra när ett ärende är komplett. Olika typer av ärenden kan kräva olika handlingar. Systemet skulle därför behöva tydliga regler och bra exempel att utgå från.
 
-Privacy and information security are also important. A real system would need to follow the relevant rules for handling personal information and documents.
+Integritet och informationssäkerhet är också viktiga frågor. Ett verkligt system skulle behöva följa relevanta regler för hantering av personuppgifter och handlingar.
 
-Because of these limitations, the AI should be used as decision support. A case officer should be able to review the result and make the final decision.
+På grund av dessa begränsningar bör AI:n användas som ett beslutsstöd. En handläggare ska kunna granska resultatet och göra den slutliga bedömningen.
 
-## What next?
+## Nästa steg
 
-The first step could be to build a small prototype using anonymised example documents.
+Ett första steg skulle kunna vara att bygga en liten prototyp med anonymiserade exempel på handlingar.
 
-The prototype could start with only a few document types and a few simple checks, for example:
+Prototypen skulle kunna börja med ett begränsat antal handlingstyper och några enkla kontroller, till exempel:
 
-- Identify the document type
-- Check whether required documents are present
-- Detect possible duplicate documents
-- Check whether basic information appears to match the applicant
+- Identifiera vilken typ av handling som har skickats in
+- Kontrollera om de handlingar som behövs finns med
+- Identifiera möjliga dubbletter
+- Kontrollera om grundläggande uppgifter verkar stämma överens med den sökande
 
-If the prototype works well, it could later be expanded to handle more document types and more complex checks.
+Om prototypen fungerar bra skulle den senare kunna utvecklas för att hantera fler handlingstyper och mer avancerade kontroller.
 
-## Acknowledgments
+## Tack
 
-This project idea was inspired by practical challenges related to document handling and case processing.
+Idén till projektet är inspirerad av praktiska utmaningar kring hantering av handlingar och handläggning av ärenden.
 
-The project was created as a final project for the Building AI course by the University of Helsinki and Reaktor.
+Projektet är framtaget som slutprojekt för Building AI-kursen vid Helsingfors universitet och Reaktor.
