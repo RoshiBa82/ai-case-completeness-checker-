@@ -1,41 +1,65 @@
 def check_case(documents, required_documents):
     """
-    Checks whether the documents in a case appear to be complete.
+    Kontrollerar om dokumenten i ett ärende verkar vara kompletta.
     """
 
     results = []
 
-    # Check for required documents
+    # Kontrollera om obligatoriska handlingar saknas
+    missing_documents = []
+
     for document in required_documents:
         if document not in documents:
-            results.append(f"Missing document: {document}")
+            missing_documents.append(document)
 
-    # Check for duplicates
+    if missing_documents:
+        for document in missing_documents:
+            results.append(f"Saknad handling: {document}")
+
+    # Kontrollera om någon handling förekommer flera gånger
     if len(documents) != len(set(documents)):
-        results.append("Possible duplicate document found.")
+        results.append("Möjlig dubblett av handling har hittats.")
 
-    # Check whether the case appears complete
+    # Bedöm om ärendet verkar vara komplett
     if not results:
-        results.append("The case appears complete.")
+        results.append("Ärendet verkar vara komplett.")
 
     return results
 
 
-# Example
+def print_case_result(documents, required_documents):
+    """
+    Skriver ut en enkel status för ärendet.
+    """
+
+    results = check_case(documents, required_documents)
+
+    print("AI-kontroll av ärendets fullständighet")
+    print("--------------------------------------")
+
+    if results == ["Ärendet verkar vara komplett."]:
+        print("Ärendestatus: Komplett")
+    else:
+        print("Ärendestatus: Behöver granskas")
+
+    for result in results:
+        print(f"- {result}")
+
+
+# Exempel på ett ärende
+
 documents = [
-    "examination_certificate",
+    "examensbevis",
     "transcript",
-    "identity_document"
+     "översättningar",
+    "identitetshandling"
 ]
 
 required_documents = [
-    "examination_certificate",
+    "examensbevis",
     "transcript",
-    "identity_document"
+     "översättningar",
+    "identitetshandling"
 ]
 
-result = check_case(documents, required_documents)
-
-for message in result:
-    print(message)
-
+print_case_result(documents, required_documents)
