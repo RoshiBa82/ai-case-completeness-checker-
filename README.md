@@ -2,7 +2,7 @@
 
 Slutprojekt för Building AI-kursen.
 
-## Summary
+## Summary 
 
 Idén är att använda AI för att hjälpa till med den första kontrollen av handlingar i ett ärende hos UHR. Systemet skulle kunna identifiera saknade eller dubbla handlingar, kontrollera om handlingar verkar tillhöra den sökande och ge en indikation på om ärendet verkar vara komplett för fortsatt handläggning.
 
