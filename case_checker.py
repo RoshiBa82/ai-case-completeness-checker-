@@ -38,3 +38,4 @@ result = check_case(documents, required_documents)
 
 for message in result:
     print(message)
+
